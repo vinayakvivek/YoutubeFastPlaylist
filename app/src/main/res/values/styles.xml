@@ -3,9 +3,25 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryDark">@color/dark_blue</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Search activity theme -->
+    <style name="newTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.YFP</item>
+    </style>
+
+    <!-- action bar styles -->
+    <style name="ActionBar.Solid.YFP" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:displayOptions">useLogo|showHome</item>
+    </style>
+
+    <!-- player styles -->
+    <style name="SettingsTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
+        <item name="android:colorPrimary">@color/blue</item>
+        <item name="android:colorPrimaryDark">@color/dark_blue</item>
     </style>
 
 </resources>
