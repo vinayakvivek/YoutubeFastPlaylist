@@ -12,6 +12,15 @@ public class VideoItem implements Serializable{
     private String thumbnailURL;
     private String id;
 
+    public VideoItem() {}
+
+    public VideoItem(String id, String title, String thumbnailURL, String description) {
+        this.id = id;
+        this.title = title;
+        this.thumbnailURL = thumbnailURL;
+        this.description = description;
+    }
+
     public String getId() {
         return id;
     }
