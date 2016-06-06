@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e62acf5-f9b6-46ed-8c54-5759da33e908" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/DatabaseHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/PlayerActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/PlayerActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/SearchActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/SearchActivity.java" />
     </list>
     <ignored path="YoutubeFastPlaylist.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,20 +31,27 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/SearchActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2242#2688#0" expanded="true" />
+                <element signature="e#2687#2688#0" expanded="true" />
+                <element signature="e#4294#4707#0" expanded="true" />
+                <element signature="e#4706#4707#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PlayerActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/PlayerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="70" column="72" selection-start-line="70" selection-start-column="72" selection-end-line="70" selection-end-column="72" />
-              <folding />
+            <state vertical-scroll-proportion="0.023255814">
+              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4179#4205#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -58,10 +66,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DatabaseHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/DatabaseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1627907">
+            <state vertical-scroll-proportion="0.0">
               <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -1654,9 +1662,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/PlayerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/VideoItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/DatabaseHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/PlayerActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/SearchActivity.java" />
       </list>
     </option>
   </component>
@@ -2003,24 +2012,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/SearchActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/PlayerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="72" selection-start-line="70" selection-start-column="72" selection-end-line="70" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/VideoItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2031,7 +2022,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/DatabaseHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1627907">
+        <state vertical-scroll-proportion="0.0">
           <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -2041,6 +2032,31 @@
             <element signature="method#deleteVideo#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getCount#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#bulkInsert#0;class#DatabaseHandler#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/SearchActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2242#2688#0" expanded="true" />
+            <element signature="e#2687#2688#0" expanded="true" />
+            <element signature="e#4294#4707#0" expanded="true" />
+            <element signature="e#4706#4707#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/PlayerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.023255814">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4179#4205#0" expanded="true" />
           </folding>
         </state>
       </provider>

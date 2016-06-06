@@ -27,10 +27,16 @@ public class SearchActivity extends AppCompatActivity {
     List<VideoItem> searchResults;
     static VideoListAdapter adapter;
 
+    public static int activeVideoIndex = 0;
+
+    public static DatabaseHandler db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        db = new DatabaseHandler(this);
 
         searchInput = (EditText) findViewById(R.id.search_input);
         videosFound = (ListView) findViewById(R.id.videos_found);
@@ -70,14 +76,27 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void play(View view) {
+        savePlaylist();
         Intent intent = new Intent(getApplicationContext(), PlayerActivity.class);
+        intent.putExtra("activeVideoIndex", activeVideoIndex);
         startActivity(intent);
+    }
+    public void savePlaylist() {
+        for (VideoItem videoItem: PlayerActivity.playlist) {
+            db.addVideo(videoItem);
+        }
     }
 
     public void add(View v) {
         VideoItem itemToAdd = (VideoItem)v.getTag();
         //adapter.remove(itemToRemove);
-        PlayerActivity.playlist.add(itemToAdd);
+        String id = itemToAdd.getId();
+
+        if (!db.isThere(itemToAdd)) {
+            PlayerActivity.playlist.add(itemToAdd);
+        } else {
+            Toast.makeText(getApplicationContext(), "video already exists in playlist", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
