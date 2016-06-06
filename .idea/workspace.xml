@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e62acf5-f9b6-46ed-8c54-5759da33e908" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/VideoItem.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/VideoItem.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/DatabaseHandler.java" />
     </list>
     <ignored path="YoutubeFastPlaylist.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,17 +48,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VideoItem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VideoItem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/VideoItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9767442">
+            <state vertical-scroll-proportion="0.0">
               <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="DatabaseHandler.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/DatabaseHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.1627907">
+              <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#getAllVideos#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="e#3873#3884#0" expanded="true" />
+                <element signature="method#updateVideo#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#deleteVideo#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#getCount#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#bulkInsert#0;class#DatabaseHandler#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -1631,6 +1656,7 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/PlayerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/VideoItem.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/DatabaseHelper.java" />
       </list>
     </option>
   </component>
@@ -1784,6 +1810,26 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method />
     </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <method />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -1822,6 +1868,11 @@
         <option name="Make" enabled="false" />
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -1972,9 +2023,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/VideoItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9767442">
+        <state vertical-scroll-proportion="0.0">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/crossroads/youtubefastplaylist/DatabaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1627907">
+          <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getAllVideos#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="e#3873#3884#0" expanded="true" />
+            <element signature="method#updateVideo#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#deleteVideo#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#getCount#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#bulkInsert#0;class#DatabaseHandler#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
