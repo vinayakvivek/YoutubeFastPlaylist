@@ -99,6 +99,11 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
         Log.i("info", "end - savePlaylist()");
     }
 
+    /**
+     * invoked when the "REMOVE FROM PLAYLIST" button is pressed.
+     * removes VideoItem from playlist and restarts PlayerActivity.
+     * @param v : Button View.
+     */
     public void add(View v) {
         // get a reference to the Object to be removed from playlist.
         VideoItem itemToRemove = (VideoItem)v.getTag();
