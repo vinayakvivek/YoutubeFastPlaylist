@@ -37,6 +37,9 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
     public static final String Title = "videoTitle";
     public static final String ThumbnailURL = "videoThumbnail";
 
+    // stores index of current video
+    private static int activeVideoIndex = 0;
+
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
