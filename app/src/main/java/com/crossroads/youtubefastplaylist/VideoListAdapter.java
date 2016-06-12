@@ -1,11 +1,11 @@
 package com.crossroads.youtubefastplaylist;
 
 import android.content.Context;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,12 +40,14 @@ public class VideoListAdapter extends ArrayAdapter<VideoItem> {
         View row = convertView;
         VideoItemHolder holder = null;
 
-        row = inflater.inflate(layoutResourceId, parent, false);
+        if (convertView == null) {
+            row = inflater.inflate(layoutResourceId, parent, false);
+        }
 
         holder = new VideoItemHolder();
         holder.videoItem = items.get(position);
-        holder.button = (Button) row.findViewById(R.id.add_button);
-        holder.button.setTag(holder.videoItem);
+        holder.fab = (FloatingActionButton) row.findViewById(R.id.fab);
+        holder.fab.setTag(holder.videoItem);
 
         holder.thumbnail = (ImageView) row.findViewById(R.id.video_thumbnail);
         holder.title = (TextView) row.findViewById(R.id.video_title);
@@ -55,6 +57,7 @@ public class VideoListAdapter extends ArrayAdapter<VideoItem> {
 
         setupItem(holder);
         return row;
+
     }
 
     private void setupItem(VideoItemHolder holder) {
@@ -64,10 +67,10 @@ public class VideoListAdapter extends ArrayAdapter<VideoItem> {
 
         switch (layoutType) {
             case SEARCH_ITEM_LAYOUT:
-                holder.button.setText("Add to playlist");
+                holder.fab.setImageResource(android.R.drawable.ic_menu_add);
                 break;
             case PLAYLIST_ITEM_LAYOUT:
-                holder.button.setText("Remove from playlist");
+                holder.fab.setImageResource(android.R.drawable.ic_input_delete);
                 break;
             default:
         }
@@ -78,6 +81,7 @@ public class VideoListAdapter extends ArrayAdapter<VideoItem> {
         ImageView thumbnail;
         TextView title;
         TextView description;
-        Button button;
+        //Button button;
+        FloatingActionButton fab;
     }
 }
