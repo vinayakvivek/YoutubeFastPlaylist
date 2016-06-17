@@ -147,6 +147,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return videoItemList;
     }
 
+    // Getting all videoIds
+    public List<String> getAllVideoIds() {
+        List<String> videoIds = new ArrayList<String>();
+
+        // SELECT ALL query
+        String query = "SELECT * FROM " + TABLE_NAME;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                videoIds.add(cursor.getString(VIDEO_ID_INDEX));
+            } while (cursor.moveToNext());
+        }
+
+        return videoIds;
+    }
+
     // Updating a single videoItem
     public int updateVideo(VideoItem videoItem) {
         SQLiteDatabase db = this.getWritableDatabase();

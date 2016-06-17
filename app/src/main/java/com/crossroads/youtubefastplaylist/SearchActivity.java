@@ -92,10 +92,18 @@ public class SearchActivity extends AppCompatActivity {
         //adapter.remove(itemToRemove);
         String id = itemToAdd.getId();
 
-        if (!db.isThere(itemToAdd)) {
+        /*if (!db.isThere(itemToAdd)) {
             PlayerActivity.playlist.add(itemToAdd);
         } else {
             Toast.makeText(getApplicationContext(), "video already exists in playlist", Toast.LENGTH_SHORT).show();
+        }*/
+
+        List<String> ids = db.getAllVideoIds();
+        if (ids.contains(id)) {
+            Toast.makeText(getApplicationContext(), "video already exists in playlist", Toast.LENGTH_SHORT).show();
+        } else {
+            PlayerActivity.playlist.add(itemToAdd);
+            Toast.makeText(getApplicationContext(), "added to playlist", Toast.LENGTH_SHORT).show();
         }
     }
 

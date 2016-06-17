@@ -1,11 +1,11 @@
 package com.crossroads.youtubefastplaylist;
 
 import android.content.Context;
-import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,8 +46,8 @@ public class VideoListAdapter extends ArrayAdapter<VideoItem> {
 
         holder = new VideoItemHolder();
         holder.videoItem = items.get(position);
-        holder.fab = (FloatingActionButton) row.findViewById(R.id.fab);
-        holder.fab.setTag(holder.videoItem);
+        holder.imageButton = (ImageButton) row.findViewById(R.id.add_button);
+        holder.imageButton.setTag(holder.videoItem);
 
         holder.thumbnail = (ImageView) row.findViewById(R.id.video_thumbnail);
         holder.title = (TextView) row.findViewById(R.id.video_title);
@@ -67,10 +67,10 @@ public class VideoListAdapter extends ArrayAdapter<VideoItem> {
 
         switch (layoutType) {
             case SEARCH_ITEM_LAYOUT:
-                holder.fab.setImageResource(android.R.drawable.ic_menu_add);
+                holder.imageButton.setImageResource(android.R.drawable.ic_menu_add);
                 break;
             case PLAYLIST_ITEM_LAYOUT:
-                holder.fab.setImageResource(android.R.drawable.ic_input_delete);
+                holder.imageButton.setImageResource(android.R.drawable.ic_delete);
                 break;
             default:
         }
@@ -82,6 +82,6 @@ public class VideoListAdapter extends ArrayAdapter<VideoItem> {
         TextView title;
         TextView description;
         //Button button;
-        FloatingActionButton fab;
+        ImageButton imageButton;
     }
 }
