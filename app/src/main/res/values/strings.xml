@@ -2,4 +2,6 @@
     <string name="app_name">YoutubeFastPlaylist</string>
     <string name="search">Search</string>
     <string name="failed">Failed to initialize Youtube Player</string>
+    <string name="preference_file_key">pref</string>
+    <string name="pref_index">activeVideoIndex</string>
 </resources>

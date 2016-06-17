@@ -1,7 +1,9 @@
 package com.crossroads.youtubefastplaylist;
 
 import android.animation.Animator;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,6 +39,8 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
     public static final String Id = "videoId";
     public static final String Title = "videoTitle";
     public static final String ThumbnailURL = "videoThumbnail";
+
+    public static int activeIndex = 0;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -109,7 +113,7 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
         // get a reference to the Object to be removed from playlist.
         final VideoItem itemToRemove = (VideoItem)v.getTag();
 
-        int position = playlist.indexOf(itemToRemove);
+        final int position = playlist.indexOf(itemToRemove);
 
         Log.i("AppInfo", "position : " + position);
 
@@ -132,6 +136,11 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
                         // remove Id ArrayList videoIds.
                         videoIds.remove(itemToRemove.getId());
 
+                        if (position < activeIndex) {
+                            activeIndex--;
+                            saveIndex();
+                        }
+
                         restartActivity();
                     }
 
@@ -146,17 +155,18 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
                     }
                 });
 
-
-
     }
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         // add listeners to YouTubePlayer instance
         youTubePlayer.setPlayerStateChangeListener(playerStateChangeListener);
+        youTubePlayer.setPlaylistEventListener(playlistEventListener);
+
+        activeIndex = getActiveIndex();
 
         if(!b && videoIds.size() != 0) {
-            youTubePlayer.loadVideos(videoIds);
+            youTubePlayer.loadVideos(videoIds, activeIndex, 0);
         }
     }
 
@@ -232,9 +242,7 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
 
         @Override
         public void onVideoEnded() {
-            Toast.makeText(getApplicationContext(),
-                    "video ended",
-                    Toast.LENGTH_SHORT).show();
+
         }
 
         @Override
@@ -242,4 +250,41 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
 
         }
     };
+    private YouTubePlayer.PlaylistEventListener playlistEventListener = new YouTubePlayer.PlaylistEventListener() {
+        @Override
+        public void onPrevious() {
+            Toast.makeText(getApplicationContext(),
+                    "clicked previous",
+                    Toast.LENGTH_SHORT).show();
+            activeIndex--;
+            saveIndex();
+        }
+
+        @Override
+        public void onNext() {
+            Toast.makeText(getApplicationContext(),
+                    "clicked next",
+                    Toast.LENGTH_SHORT).show();
+            activeIndex++;
+            saveIndex();
+        }
+
+        @Override
+        public void onPlaylistEnded() {
+
+        }
+    };
+
+    public void saveIndex() {
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        sharedPref.edit()
+                .putInt(getString(R.string.pref_index), activeIndex)
+                .commit();
+        Log.i("AppInfo", "activeIndex : " + activeIndex);
+    }
+
+    public int getActiveIndex() {
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        return sharedPref.getInt(getString(R.string.pref_index), 0);
+    }
 }
