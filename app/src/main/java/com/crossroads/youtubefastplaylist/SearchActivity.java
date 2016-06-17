@@ -78,7 +78,6 @@ public class SearchActivity extends AppCompatActivity {
     public void play(View view) {
         savePlaylist();
         Intent intent = new Intent(getApplicationContext(), PlayerActivity.class);
-        intent.putExtra("activeVideoIndex", activeVideoIndex);
         startActivity(intent);
     }
     public void savePlaylist() {

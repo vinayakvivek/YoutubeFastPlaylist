@@ -52,10 +52,11 @@ public class VideoListAdapter extends ArrayAdapter<VideoItem> {
         holder.thumbnail = (ImageView) row.findViewById(R.id.video_thumbnail);
         holder.title = (TextView) row.findViewById(R.id.video_title);
 //        holder.description = (TextView) row.findViewById(R.id.video_description);
-
+        holder.position = position;
         row.setTag(holder);
 
         setupItem(holder);
+
         return row;
 
     }
@@ -83,5 +84,6 @@ public class VideoListAdapter extends ArrayAdapter<VideoItem> {
         TextView description;
         //Button button;
         ImageButton imageButton;
+        int position;
     }
 }

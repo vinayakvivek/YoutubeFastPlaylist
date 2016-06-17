@@ -1,5 +1,6 @@
 package com.crossroads.youtubefastplaylist;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -106,25 +107,56 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
      */
     public void add(View v) {
         // get a reference to the Object to be removed from playlist.
-        VideoItem itemToRemove = (VideoItem)v.getTag();
+        final VideoItem itemToRemove = (VideoItem)v.getTag();
 
-        // remove it from playlist.
-        playlistAdapter.remove(itemToRemove);
+        int position = playlist.indexOf(itemToRemove);
 
-        // remove Id ArrayList videoIds.
-        videoIds.remove(itemToRemove.getId());
+        Log.i("AppInfo", "position : " + position);
 
-        // restart the activity.
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
+        View item = playlist_listview.getChildAt(position);
+
+        item.animate()
+                .alpha(0f)
+                .setDuration(500)
+                .setListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        // remove it from playlist.
+                        playlistAdapter.remove(itemToRemove);
+
+                        // remove Id ArrayList videoIds.
+                        videoIds.remove(itemToRemove.getId());
+
+                        restartActivity();
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+
+                    }
+                });
+
+
+
     }
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+        // add listeners to YouTubePlayer instance
+        youTubePlayer.setPlayerStateChangeListener(playerStateChangeListener);
+
         if(!b && videoIds.size() != 0) {
-            youTubePlayer.cueVideos(videoIds);
-            youTubePlayer.play();
+            youTubePlayer.loadVideos(videoIds);
         }
     }
 
@@ -140,4 +172,74 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
         savePlaylist();
     }
 
+    public void restartActivity() {
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
+
+    public void reloadPlayer() {
+        playerView.initialize(KEY, this);
+    }
+
+    private YouTubePlayer.PlaybackEventListener playbackEventListener = new YouTubePlayer.PlaybackEventListener() {
+
+        @Override
+        public void onPlaying() {
+
+        }
+
+        @Override
+        public void onPaused() {
+
+        }
+
+        @Override
+        public void onStopped() {
+
+        }
+
+        @Override
+        public void onBuffering(boolean b) {
+
+        }
+
+        @Override
+        public void onSeekTo(int i) {
+
+        }
+    };
+    private YouTubePlayer.PlayerStateChangeListener playerStateChangeListener = new YouTubePlayer.PlayerStateChangeListener() {
+        @Override
+        public void onLoading() {
+
+        }
+
+        @Override
+        public void onLoaded(String s) {
+
+        }
+
+        @Override
+        public void onAdStarted() {
+
+        }
+
+        @Override
+        public void onVideoStarted() {
+
+        }
+
+        @Override
+        public void onVideoEnded() {
+            Toast.makeText(getApplicationContext(),
+                    "video ended",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onError(YouTubePlayer.ErrorReason errorReason) {
+
+        }
+    };
 }
