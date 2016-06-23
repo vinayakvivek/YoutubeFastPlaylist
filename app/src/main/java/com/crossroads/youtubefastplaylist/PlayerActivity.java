@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -42,6 +43,10 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
 
     public static int activeIndex = 0;
 
+    // UI Buttons.
+    protected Button nextButton;
+    protected Button previousButton;
+
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -50,6 +55,8 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
         activeIndex = getActiveIndex();
 
         playlist_listview = (ListView) findViewById(R.id.playlist_listview);
+        nextButton = (Button) findViewById(R.id.next_button);
+        previousButton = (Button) findViewById(R.id.previous_button);
 
         // initialising playlistAdapter
         LayoutInflater inflater = getLayoutInflater();
@@ -65,6 +72,13 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
 
         loadPlaylist();
         no_of_videos = playlist.size();
+
+        if (activeIndex == 0) {
+            previousButton.setEnabled(false);
+        }
+        if (activeIndex == playlist.size()-1) {
+            nextButton.setEnabled(false);
+        }
 
         playerView = (YouTubePlayerView)findViewById(R.id.player_view);
         playerView.initialize(KEY, this);
@@ -124,41 +138,45 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
 
         View item = playlist_listview.getChildAt(position);
 
-        item.animate()
-                .alpha(0f)
-                .setDuration(500)
-                .setListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
+        if (item != null) {
+            item.animate()
+                    .alpha(0f)
+                    .setDuration(500)
+                    .setListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
 
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        // remove it from playlist.
-                        playlistAdapter.remove(itemToRemove);
-
-                        // remove Id ArrayList videoIds.
-                        videoIds.remove(itemToRemove.getId());
-
-                        if (position < activeIndex) {
-                            activeIndex--;
-                            saveIndex();
                         }
 
-                        restartActivity();
-                    }
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            // remove it from playlist.
+                            playlistAdapter.remove(itemToRemove);
 
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
+                            // remove Id ArrayList videoIds.
+                            videoIds.remove(itemToRemove.getId());
 
-                    }
+                            if (position < activeIndex) {
+                                activeIndex--;
+                                saveIndex();
+                            }
 
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
+                            restartActivity();
+                        }
 
-                    }
-                });
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    });
+        } else {
+            Log.i("AppInfo", "item is null");
+        }
 
     }
 
@@ -292,6 +310,25 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
     public int getActiveIndex() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         return sharedPref.getInt(getString(R.string.pref_index), 0);
+    }
+
+    public void nextButtonHandler(View v) {
+
+        if (activeIndex >= playlist.size()-1) {
+            return;
+        }
+        activeIndex++;
+        saveIndex();
+        restartActivity();
+    }
+    public void previousButtonHandler(View v) {
+
+        if (activeIndex <= 0) {
+            return;
+        }
+        activeIndex--;
+        saveIndex();
+        restartActivity();
     }
 
 }

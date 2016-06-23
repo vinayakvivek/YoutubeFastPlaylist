@@ -7,12 +7,38 @@
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/player_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:elevation="4dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:elevation="4dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="PREV"
+            android:id="@+id/previous_button"
+            android:onClick="previousButtonHandler"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="NEXT"
+            android:id="@+id/next_button"
+            android:onClick="nextButtonHandler"/>
+
+    </LinearLayout>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/playlist_listview"
-        android:choiceMode="none"/>
+        android:choiceMode="none"
+        android:elevation="0dp"/>
+
 
 </LinearLayout>
