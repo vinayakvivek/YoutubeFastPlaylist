@@ -47,6 +47,8 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
         super.onCreate(bundle);
         setContentView(R.layout.activity_player);
 
+        activeIndex = getActiveIndex();
+
         playlist_listview = (ListView) findViewById(R.id.playlist_listview);
 
         // initialising playlistAdapter
@@ -55,7 +57,8 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
                 R.layout.video_item,
                 playlist,
                 inflater,
-                VideoListAdapter.PLAYLIST_ITEM_LAYOUT);
+                VideoListAdapter.PLAYLIST_ITEM_LAYOUT,
+                activeIndex);
         playlist_listview.setAdapter(playlistAdapter);
 
         videoIds = new ArrayList<String>();
@@ -69,6 +72,8 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
 
     public void loadPlaylist() {
         Log.i("info", "start - loadPlaylist()");
+
+        Log.i("AppInfo", "activeIndex : " + activeIndex);
 
         playlistAdapter.clear();
         Log.i("playlist size", Integer.toString(playlist.size()));
@@ -242,7 +247,6 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
 
         @Override
         public void onVideoEnded() {
-
         }
 
         @Override
@@ -258,6 +262,7 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
                     Toast.LENGTH_SHORT).show();
             activeIndex--;
             saveIndex();
+            restartActivity();
         }
 
         @Override
@@ -267,6 +272,7 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
                     Toast.LENGTH_SHORT).show();
             activeIndex++;
             saveIndex();
+            restartActivity();
         }
 
         @Override
@@ -287,4 +293,5 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         return sharedPref.getInt(getString(R.string.pref_index), 0);
     }
+
 }

@@ -1,6 +1,7 @@
 package com.crossroads.youtubefastplaylist;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,13 +27,19 @@ public class VideoListAdapter extends ArrayAdapter<VideoItem> {
     public static final int PLAYLIST_ITEM_LAYOUT = 1;
     private int layoutType;
 
-    public VideoListAdapter(Context context, int resource, List<VideoItem> items, LayoutInflater inflater, int layoutType) {
+    int activeIndex;
+
+    public VideoListAdapter(Context context, int resource, List<VideoItem> items,
+                            LayoutInflater inflater,
+                            int layoutType,
+                            int activeIndex) {
         super(context, resource, items);
         layoutResourceId = resource;
         this.context = context;
         this.items = items;
         this.inflater = inflater;
         this.layoutType = layoutType;
+        this.activeIndex = activeIndex;
     }
 
     @Override
@@ -43,6 +50,31 @@ public class VideoListAdapter extends ArrayAdapter<VideoItem> {
         if (convertView == null) {
             row = inflater.inflate(layoutResourceId, parent, false);
         }
+
+        if (position == activeIndex) {
+            row.setBackgroundColor(context.getResources().getColor(R.color.blue));
+            Log.i("AppInfo", "changed back color - activeIndex : " + activeIndex);
+        } else {
+            row.setBackgroundColor(context.getResources().getColor(R.color.white));
+        }
+
+       /* switch (position) {
+            case 0 :
+                row.setBackgroundColor(context.getResources().getColor(R.color.colorPrimaryDark));
+                break;
+            case 1 :
+                row.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+                break;
+            case 2 : row.setBackgroundColor(context.getResources().getColor(R.color.blue));
+                break;
+            case 3 :
+                row.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+                break;
+            default:
+                row.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+        }*/
+
+        Log.i("AppInfo", "position in getView() : " + position);
 
         holder = new VideoItemHolder();
         holder.videoItem = items.get(position);
@@ -86,4 +118,5 @@ public class VideoListAdapter extends ArrayAdapter<VideoItem> {
         ImageButton imageButton;
         int position;
     }
+
 }

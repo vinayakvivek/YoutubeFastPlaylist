@@ -58,7 +58,9 @@ public class SearchActivity extends AppCompatActivity {
 //        searchResults.add(videoItem);
 
         LayoutInflater inflater = getLayoutInflater();
-        adapter = new VideoListAdapter(getApplicationContext(), R.layout.video_item, searchResults, inflater, VideoListAdapter.SEARCH_ITEM_LAYOUT);
+        adapter = new VideoListAdapter(getApplicationContext(),
+                R.layout.video_item, searchResults, inflater,
+                VideoListAdapter.SEARCH_ITEM_LAYOUT, -1);
         videosFound.setAdapter(adapter);
 
         searchInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
